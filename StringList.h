@@ -57,5 +57,12 @@ class StringList
 	{
 		return _data == 0;
 	}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+	
+	size_t size() const noexcept;
+	void clear() noexcept;
+	std::string& back();
+	void push_back (std::string c);
+	void pop_back();
+	void reserve (size_t new_cap);
 };
-
