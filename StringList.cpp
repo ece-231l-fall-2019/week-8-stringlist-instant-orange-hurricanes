@@ -2,13 +2,14 @@
 
 size_t StringList::size() const
 { 
-	size_t n = 0;
-	llist *Copy = new llist;
-	Copy = _data;
-	for( llist *temp = Copy; Copy->next == NULL; n++)
+	size_t n = 0;	
+
+	if( _data == NULL )
+		return n;
+	n = 1;
+	for( llist *head = _data; head->next != NULL  ; n++)
 	{
-		temp = Copy->next;
-		Copy = temp->next;
+		head = head->next;
 	}
 
 	return n;
@@ -24,81 +25,83 @@ void StringList::clear() noexcept
 
 std::string& StringList::back()
 {
-	while( _data->next != NULL )
+	if( _data == NULL )
+		std::cout << "undefined" << std::endl;
+	llist *end = _data;
+	
+	while( end->next != NULL )
 	{
-		llist *tail = _data;
-		tail = _data->next;
-		_data = tail;
-		if( _data->next == NULL )
-		{
-			return _data->str;
-		}
-	}	
-	return _data->str;
+		end = end->next;
+	}
+	return end->str;
+	
 }
 
 void StringList::push_back (std::string c)
 {
-	llist *temp = _data;
-	while( _data->next != NULL )
+/*
+	if( size() > max_size() )
+		throw std::length_error("push_back");
+*/
+	llist *temp = new llist;
+	temp->str = c;
+	temp->next = NULL;
+	
+	if( _data == NULL)
 	{
-		temp = _data->next;
 		_data = temp;
-		if( _data->next == NULL )
-		{
-			_data->str = c;
-		}
+		return;
 	}
-	_data->str = c;
+	
+	llist *end = _data;
+	
+	while( end->next != NULL )
+	{
+		end = end->next;
+	}
+	
+	end->next = temp;
 }
 
 void StringList::pop_back()
 {
-	llist *back = _data;
-	while( _data->next != NULL )
-	{
-		back = _data->next;
-		if( back->next == NULL)
-		{
-			delete back;
-		}
-		_data = back;
-	}
+	llist *temp, *prev;
 	
-	delete back;	
+	if( _data == NULL)
+		return;
+	
+	else if( _data->next == NULL )
+	{
+		temp = _data;
+		_data = NULL;
+		delete temp;
+	}
+	else 
+	{	
+		temp = _data;
+		while( temp->next != NULL)
+		{
+			prev = temp;
+			temp = temp->next;
+		}
+		prev->next = NULL;
+		delete temp;
+	}
 }
 
-void StringList::reserve(size_t new_cap)
-{	
-
-	if( new_cap == size() )
-		return;	
-
-/*	else if( new_cap > max_size())
-		throw std::length_error("new_cap is greater than max_size");
-*/
-	else if( new_cap > size() )
+void StringList::reverse()
+{
+	if( _data == NULL || size() <= 1 )
+		return;
+	llist *curr, *next, *prev;
+	curr = _data;
+	prev = NULL;
+	while( curr != NULL)
 	{
-		llist *add_node = _data;
-		while( _data->next != 0)
-		{
-			add_node = _data->next;
-			_data = add_node;
-			if( _data->next == NULL)
-			{
-				for( size_t n = size(); n != 0; n-- )
-				{
-					_data = add_node->next;
-					add_node = _data;
-				}
-			}	 
-		}
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
 	}
-	else if( new_cap < size() )
-	{
-		for( size_t n = size(); n != new_cap; n--)
-			pop_back();	
-	}
-	else
-		std::cout<< " Condition not meet " << std::endl;
+	_data = prev;
 }

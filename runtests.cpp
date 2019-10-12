@@ -25,6 +25,22 @@ int main()
 	// Write *at least* 15 more tests to fully test
 	// your class.
 
+	StringList t;
+
+	t.push_back("A");
+	t.push_back("B");
+	t.push_front("C");
+	t.push_front("D");
+	t.push_back("E");
+
+	StringList e;
+
+	e.push_back("A");
+	e.push_back("B");
+	e.push_front("C");
+	e.push_front("D");
+	e.push_back("E");
+
 	StringList a;
 
 	a.push_back("A");
@@ -34,22 +50,22 @@ int main()
 	a.push_back("E");
 
 	// D,C,A,B,E
-	
+	t.reverse();
+	Assert( e.back() == t.front(), "reverse");	
 	Assert(a.size() == 5, "size method");
-
 	Assert(a.front() == "D", "front method");
 	a.pop_front(); // delete D _ C,A,B,E
 	Assert(a.front() == "C", "pop_front method");
 	Assert(a.back() == "E", "back method");
 	a.pop_back();  // delete E _ C,A,B
-	Assert(a.back() == "B", "pop_back method");
+	Assert(a.back() == "B", "pop_back method L_45");
 	a.pop_front(); // delete C _ A,B
 	Assert(a.front() == "A", "front method");
 	a.pop_back();  // delete B _ A
-	Assert(a.back() == "A", "back method");
+	Assert(a.back() == "A", "back method L_49");
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-	Assert(a.size() == 1, "size method");
+	Assert(a.size() == 1, "size method L_52");
 	Assert(a.front()== "A","front method");
 
 	a.push_back("B");
