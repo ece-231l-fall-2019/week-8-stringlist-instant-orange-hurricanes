@@ -83,7 +83,12 @@ int main()
 	StringList T;		
 	t = T;
 
-	Assert(t == T, "ABCDE = ABCDE");
+	Assert(t == T, "operator =: ABCDE = ABCDE");
+	
+	StringList j;
+	j = T;	
+	
+	Assert(T == j, "operator=: ABCDE = ABCDE");
 	
 	//empty
 	StringList f;
@@ -99,19 +104,21 @@ int main()
 	//clear	
 	StringList g;
 	g.push_back("F");
-	g.push_back("I");
-	g.push_back("N");
-	g.push_back("A");
-	g.push_back("L");
-	
+
 	StringList h;
-	h.push_back("T");
+	h.push_back("H");
+	
+	StringList k;
+	k.push_back("G");
 	
 	g.clear();
 	h.clear();
+	k.clear();
 	
-	Assert(g == h, "cleared g and h StringLists of contents!");
-
+	Assert(g == h, "cleared g StringLists of contents!");
+	Assert(h == k, "cleared h StringLists of contents!");
+	Assert(k == g, "cleared k StringLists of contents!");
+	
 	//front
 	//back	
 	
@@ -164,9 +171,8 @@ int main()
 	D.push_back("N");
 	
 	d.unique();
-	Assert(d == D, "unique: BANANA -> B");
+	Assert(d == D, "unique: BAAANN -> BAN");
 	
 	return 0;
 }
-
 
