@@ -3,7 +3,7 @@
 // change the value below to 1 to run tests against your StringList class.
 // change the value below to 0 to run tests against the built in std::list.
 
-#if 1
+#if 0
 #include "StringList.h"
 #else
 #include <list>
@@ -25,14 +25,6 @@ int main()
 	// Write *at least* 15 more tests to fully test
 	// your class.
 
-	StringList t;
-
-	t.push_back("A");
-	t.push_back("B");
-	t.push_front("C");
-	t.push_front("D");
-	t.push_back("E");
-
 	StringList e;
 
 	e.push_back("A");
@@ -49,9 +41,7 @@ int main()
 	a.push_front("D");
 	a.push_back("E");
 
-	// D,C,A,B,E
-	t.reverse();
-	Assert( e.back() == t.front(), "reverse");	
+	// D,C,A,B,E	
 	Assert(a.size() == 5, "size method");
 	Assert(a.front() == "D", "front method");
 	a.pop_front(); // delete D _ C,A,B,E
@@ -63,11 +53,8 @@ int main()
 	Assert(a.front() == "A", "front method");
 	a.pop_back();  // delete B _ A
 	Assert(a.back() == "A", "back method L_49");
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 	Assert(a.size() == 1, "size method L_52");
 	Assert(a.front()== "A","front method");
-
 	a.push_back("B");
 	a.push_back("R");
 	a.push_front("Q");
@@ -81,6 +68,103 @@ int main()
 	Assert(a.back() == "R", "pop_front");
 	a.pop_back(); // Q,A,B
 	Assert(a.back() == "B", "pop_back");
+	//===============================^davids OG//
+	
+	
+	//operator =
+	StringList t;
+
+	t.push_back("A");
+	t.push_back("B");
+	t.push_front("C");
+	t.push_front("D");
+	t.push_back("E");
+	
+	StringList T;		
+	t = T;
+
+	Assert(t == T, "ABCDE = ABCDE");
+	
+	//empty
+	StringList f;
+	Assert(f.empty() == true, "f.empty: f is empty");
+	
+	StringList i;
+	i.push_back("L");
+	i.push_back("O");
+	i.push_back("L");
+	Assert(i.empty() == false, "i.empty: f is not empty");
+
+	//size
+	//clear	
+	StringList g;
+	g.push_back("F");
+	g.push_back("I");
+	g.push_back("N");
+	g.push_back("A");
+	g.push_back("L");
+	
+	StringList h;
+	h.push_back("T");
+	
+	g.clear();
+	h.clear();
+	
+	Assert(g == h, "cleared g and h StringLists of contents!");
+
+	//front
+	//back	
+	
+	//reverse
+	StringList b; 
+	b.push_back("E");
+	b.push_back("N");
+	b.push_back("O");
+	b.push_back("H");
+	b.push_back("P");
+	
+	b.reverse();
+	StringList B;
+	B.push_back("P");
+	B.push_back("H");
+	B.push_back("O");
+	B.push_back("N");
+	B.push_back("E");
+	
+	Assert(b == B, "reverse: ENOHP -> PHONE");
+	
+	//unique
+	StringList c;
+	c.push_back("J");
+	c.push_back("A");
+	c.push_back("Z");
+	c.push_back("Z");
+	c.push_back("Y");
+
+	c.unique();
+	StringList C;	
+	C.push_back("J");
+	C.push_back("A");
+	C.push_back("Z");
+	C.push_back("Y");
+
+	Assert(c == C, "unique: JAZZY -> JAZY");
+	
+	StringList d;
+	d.push_back("B");
+	d.push_back("A");
+	d.push_back("A");
+	d.push_back("A");
+	d.push_back("N");
+	d.push_back("N");
+		
+	StringList D;
+	D.push_back("B");
+	D.push_back("A");
+	D.push_back("N");
+	
+	d.unique();
+	Assert(d == D, "unique: BANANA -> B");
 	
 	return 0;
 }
