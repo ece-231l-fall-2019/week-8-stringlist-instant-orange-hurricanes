@@ -1,5 +1,37 @@
 #include "StringList.h"
 
+
+/*
+operator= 
+
+basic_string& operator=( basic_string&& str );
+{
+Reminder: Op= Its wrong! Add prev to all functions 
+
+llist *new = new llist;
+new->prev = NULL;
+
+llist *prev = _data;
+llist *next = _ data;
+
+If(   std::allocator_traits<Allocator>::propagate_on_container_move_assignment()   ) 
+{
+for(  ; str != NULL; prev = next->prev, str++, next = next->next;
+{
+ If ( new == NULL ) new->next = str;
+ New->prev = prev;
+ New->next = next;
+}
+
+}
+
+If( *this == str ) return *this;
+
+}
+
+*/
+
+
 size_t StringList::size() const
 { 
 	size_t n = 0;	
