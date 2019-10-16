@@ -1,4 +1,4 @@
-#include "StringList.h"
+ #include "StringList.h"
 
 
 /*
@@ -30,7 +30,81 @@ If( *this == str ) return *this;
 }
 
 */
+/*
+StringList& StringList::operator=(StringList &)
+{
+    if (this != &str)
+    {
+        llist *curr, *newNode;
 
+        curr = _data;
+        newNode = NULL;
+
+        while (curr)
+        {
+            newNode = curr->next;
+            delete curr;
+            curr = newNode;
+        }
+
+        llist *cptr = new llist;
+        cptr = str._data;
+        cptr->next = NULL;
+	llist *temp = _data;
+        temp = str._data->next;
+        
+	while (temp)
+            {
+                cptr->next = new llist;
+                cptr->next = temp;
+                cptr = cptr->next;
+                cptr->next = NULL;
+                temp = str._data->next;
+            }
+        }
+
+    return *this;
+}
+*/
+/*
+StringList& StringList::Copy(const StringList & str)
+{
+
+	if( this == &str )
+		_head = _tail = NULL; //_tail, _head ... _data;
+	
+	llist newList = new llist;
+	while( str )
+	{
+		str._data->
+	}
+}
+*//*
+StringList& StringList::operator=(const StringList & str)
+{
+
+	if( this == &str )
+		return *this;
+	// llist *tmp = _data; //test
+	//tmp.clear(); //test
+
+	llist *next = _data;
+	llist *prev = NULL;
+	llist *newNode = new llist;
+
+	while( str != NULL )
+	{
+		newNode->str = str;
+		newNode->next = next;
+		prev = newNode;
+		newNode = newNode->next;
+		newNode->next = NULL;
+		newNode->prev = prev;
+		str++;
+
+	}
+
+}
 
 size_t StringList::size() const
 { 
@@ -70,11 +144,11 @@ std::string& StringList::back()
 }
 
 void StringList::push_back (std::string c)
-{
+{*/
 /*
 	if( size() > max_size() )
 		throw std::length_error("push_back");
-*/
+*//*
 	llist *temp = new llist;
 	temp->str = c;
 	temp->next = NULL;
@@ -86,17 +160,21 @@ void StringList::push_back (std::string c)
 	}
 	
 	llist *end = _data;
-	
+	llist *prev = NULL; // test 
+
 	while( end->next != NULL )
 	{
+		prev->next = end; //test
 		end = end->next;
 	}
 	
 	end->next = temp;
+	end->prev = prev;  //test
 }
 
 void StringList::pop_back()
 {
+	// delete link to prev 
 	llist *temp, *prev;
 	
 	if( _data == NULL)
@@ -133,7 +211,8 @@ void StringList::reverse()
 		next = curr->next;
 		curr->next = prev;
 		prev = curr;
+		curr->prev = prev; // test
 		curr = next;
 	}
 	_data = prev;
-}
+}*/
