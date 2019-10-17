@@ -22,6 +22,13 @@ class StringList
 		_head = 0;
 		_count = 0; 
 	}
+
+	void print()
+	{
+		for( llist *start = _head ; start != NULL; start = start->next)
+			std::cout << start->value << " ";
+		std::cout<< std::endl;
+	}
 	// copy constructor
 	StringList(const StringList&);
 	// destructor
@@ -51,87 +58,55 @@ class StringList
 	
 	void push_front(std::string value)
 	{
-		if( _head == NULL )
-		{
-			llist *ptr = new llist;
-			ptr->value = value;
-			ptr->next = NULL;
-			ptr->prev = NULL;
-			_head = _tail = ptr;
-			_count++;
-			return;
-			// _head->value = _tails->value = value;
-			// _count++;
-		}
-		else
-		{
-			llist *newItem = new llist;
-			newItem->prev = NULL;
-			newItem->value = value;
-			newItem->next = _head;
+		llist *ptr = new llist;
+		ptr->value = value;
 
-			_head->prev = newItem;
-			_head = _head->prev;
-			_count++;
-		}
+		ptr->prev = NULL;
+		ptr->next = _head;
+		if( _head != NULL)
+			_head->prev = ptr;
+		if( _head == NULL )
+			_head = ptr;
+		_head = ptr;
+		_count++;
+		
 	}
 
 	void push_back (std::string value)
 	{
-		if( NULL == _tail )
-		{
-			llist *ptr = new llist;
-			ptr->value = value;
-			ptr->next = NULL;
-			ptr->prev = NULL;
-			_head = _tail = ptr;
-			_count++;
-			return;
-			// _head->value = _tails->value = value;
-			// _count++;
-		}
-		else 
-		{
-			llist *newItem = new llist;
-			newItem->next = NULL;
-			newItem->value = value;
-			newItem->prev = _tail;
-			_tail->next = newItem;
-			_tail = _tail->next;
-			_count++;
-		}
+		llist *ptr = new llist;
+		ptr->value = value;
+		ptr->next = NULL;
+		ptr->prev = _tail;
+		if( _tail != NULL)
+			_tail->next = ptr;
+		if( _head == NULL )
+			_head = ptr;
+		_tail = ptr;
+		_count++;
 	}
 	void pop_front()
 	{
-		if( _tail )
-		{
-			llist *delete_me = _head;
-			_head = _head->next;
+		llist *delete_me = _head;
+		_head = _head->next;
+		if( _head )
+			_head->prev = _head->prev->prev;
+		else 
+			_tail = NULL;
 
-			if( _tail )
-				_head->prev = NULL;
-			else 
-				_head = NULL;
+		delete delete_me;
 
-			delete delete_me;
-			_count--;
-		}
 	}
 	void pop_back()
 	{
-		if( _tail )
-		{
-			llist *delete_me_PLS = _tail;
-			_tail = _tail->prev;
-			
-			if( _tail )
-				_tail->next = NULL;
-			else
-				_head = NULL;
+		llist *delete_me = _tail;
+		_tail = _tail->prev;
+		if( _head )
+			_tail->next = _tail->next->next;
+		else 
+			_head = NULL;
 
-			delete delete_me_PLS;	
-			_count--;
-		}
+		delete delete_me;
 	}
 	void reverse ()
 	{
@@ -170,14 +145,20 @@ class StringList
 
 	bool empty() const
 	{
-		return (_head == NULL && _tail == NULL);
+		return size() == 0;
 	}
 
 	size_t size() const
 	{
 		size_t count = 0;
-		if( _head == _tail)
+		if( _head == NULL ) 
 			return count;
+		if( _head == _tail)
+		{
+			count++;
+			return count;
+		}
+
 		for( llist *temp = _head; temp != NULL; temp = temp->next, count++ ){}
 		
 		return count;
@@ -216,3 +197,25 @@ class StringList
 	
 
 };
+/*
+
+	void unique()
+	{	
+		for (llist *ptr = _head; ptr != 0; ptr = ptr -> next)
+		{
+			if( ptr->next != NULL && ptr->value == ptr->next->value )
+			{
+				llist *savedPtr = ptr->next;
+				ptr->next = savedPtr->next;
+				if( savedPtr->next != NULL)
+				{
+					savedPtr->next->prev = ptr;
+				}
+				else 
+					_tail = ptr;
+				delete savedPtr;
+				_count--;
+			}
+		}
+	}	
+*/

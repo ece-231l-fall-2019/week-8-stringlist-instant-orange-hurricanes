@@ -19,11 +19,15 @@ void Assert(bool cond, std::string message)
 		std::cerr << "FAIL: " << message << std::endl;
 }
 
+
 int main()
 {
 	// TODO:
 	// Write *at least* 15 more tests to fully test
 	// your class.
+
+
+	// a.print() 
 
 	StringList e;
 
@@ -40,7 +44,7 @@ int main()
 	a.push_front("C");
 	a.push_front("D");
 	a.push_back("E");
-/*
+
 	// D,C,A,B,E	
 	Assert(a.size() == 5, "size method");
 	Assert(a.front() == "D", "front method");
@@ -55,14 +59,14 @@ int main()
 	Assert(a.back() == "A", "back method L_49");
 	Assert(a.size() == 1, "size method L_52");
 	Assert(a.front()== "A","front method");
-*/
+
 	a.push_back("B");
 	a.push_back("R");
 	a.push_front("Q");
 	a.push_back("T");
 	a.push_front("Z");
 	// Z,Q,A,B,R,T
-/*	Assert(a.front() == "Z", "front method");
+	Assert(a.front() == "Z", "front method");
 	a.pop_back(); // Z,Q,A,B,R
 	Assert(a.front() == "Z", "front method");
 	a.pop_front(); // Q,A,B,R
@@ -70,7 +74,7 @@ int main()
 	a.pop_back(); // Q,A,B
 	Assert(a.back() == "B", "pop_back");
 	//===============================^davids OG//
-*/	
+	
 	
 	//operator =
 	StringList t;
@@ -93,13 +97,13 @@ int main()
 	
 	//empty
 	StringList f;
-//	Assert(f.empty() == true, "f.empty: f is empty");
+	Assert(f.empty() == true, "f.empty: f is empty");
 	
 	StringList i;
 	i.push_back("L");
 	i.push_back("O");
 	i.push_back("L");
-//	Assert(i.empty() == false, "i.empty: f is not empty");
+	Assert(i.empty() == false, "i.empty: f is not empty");
 
 	//size
 	//clear	
@@ -149,7 +153,7 @@ int main()
 	c.push_back("Z");
 	c.push_back("Y");
 
-//	c.unique();
+	c.unique();
 	StringList C;	
 	C.push_back("J");
 	C.push_back("A");
@@ -171,7 +175,7 @@ int main()
 	D.push_back("A");
 	D.push_back("N");
 	
-//	d.unique();
+	d.unique();
 //	Assert(d == D, "unique: BAAANN -> BAN");
 	
 	return 0;
