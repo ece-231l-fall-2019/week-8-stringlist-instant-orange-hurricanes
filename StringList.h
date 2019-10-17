@@ -30,25 +30,16 @@ class StringList
 		while(!empty())
 			pop_front();
 	}
-	// copy operator
-	StringList& operator=(const StringList& str)
+	// copy operator	
+	StringList& operator=(const StringList& a)
 	{
-		if( this == &str )
-			return *this;
-		if( str._head == NULL)
+		for (const llist* b = a._head; b != 0; b = b->next)
 		{
-			_head = _tail = NULL; return *this;
-		}
-		
-		llist *oldrusty = str._head;
-		while( oldrusty->next != NULL )
-		{
-			llist *curr = oldrusty;
-			push_back( curr->value);
-			oldrusty->next = curr->next;
-		}
+			push_back(b->value);
+		}	
 		return *this;
 	}
+
 	std::string& front()
 	{
 		return _head->value;
@@ -82,17 +73,6 @@ class StringList
 			_head->prev = newItem;
 			_head = _head->prev;
 			_count++;
-/* GDB
-
-(gdb) p *_head
-$1 = {value = "E", next = 0x0, prev = 0x55555576b470}
-(gdb) p *_tail
-$2 = {value = "P", next = 0x0, prev = 0x55555576b4f0}
-(gdb) 
-
-correct prev and next on head.
-*/
-
 		}
 	}
 
@@ -171,18 +151,22 @@ correct prev and next on head.
 		_head = _tail;
 		_tail = curr;	
 	}
+
 	bool empty() const
 	{
 		return (_head == NULL && _tail == NULL);
 	}
+
 	size_t size() const
 	{
 		size_t count = 0;
 		if( _head == _tail)
 			return count;
 		for( llist *temp = _head; temp != NULL; temp = temp->next, count++ ){}
+		
 		return count;
 	}
+
 	void clear() noexcept
 	{
 		while( !empty() )
@@ -190,5 +174,29 @@ correct prev and next on head.
 			pop_back();
 		}
 	}
+	
+	void unique()
+	{
+		for (llist *i = _tail; i != 0; i = i -> next)
+		{
+			while( i -> next != 0 && i -> value == i -> next -> value)
+			{
+				llist *save = i -> next;
+				i -> next = save -> next;
+
+				if (save -> next != 0)
+				{
+					save -> next ->prev = i;
+					delete save;
+				}
+				else
+				{
+					_tail = i;
+					delete save;
+				}
+			}
+		}
+	}
+	
 
 };
