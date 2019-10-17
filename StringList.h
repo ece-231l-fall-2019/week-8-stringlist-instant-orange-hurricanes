@@ -137,10 +137,26 @@ class StringList
 	{
 		if( _head == _tail || size() == 1 )
 			return;
+		if( _head->next == NULL )
+			return;
+		llist *temp;
+		llist *curr = _head;
+		while( curr != NULL )
+		{
+			temp = curr->prev;
+			curr->prev = curr->next;
+			curr->next = temp;
+			curr = curr->prev;
+		}
+		temp = temp->prev;
+		if( temp != NULL)
+			temp = temp->prev;
+		_tail = _head;
+		_head = temp;
+/*
 		llist *tmp = NULL;
 		llist *curr = _head;
 		llist *ptr = curr->next;
-
 		for( ; curr != NULL; ptr = ptr->next)
 		{
 			curr->prev = ptr;
@@ -149,7 +165,7 @@ class StringList
 			curr = curr ->prev;
 		}
 		_head = _tail;
-		_tail = curr;	
+		_tail = curr;	*/
 	}
 
 	bool empty() const
