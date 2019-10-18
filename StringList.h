@@ -58,8 +58,9 @@ class StringList
 		for( llist *ptr = _head ; ptr != NULL; ptr = ptr->next)
 			std::cout << ptr->value << " ";
 		std::cout<< std::endl;
+		std::cout<<"-----------------"<<std::endl;
 	}
-
+/*
 	bool operator==(StringList& a, StringList& b)
 	{
 		if(a.size() == b.size())
@@ -77,7 +78,7 @@ class StringList
 		}
 		return false;
 	}
-		
+*/		
 	void push_front(std::string value)
 	{
 		llist *ptr = new llist;
@@ -186,9 +187,9 @@ class StringList
 		return count;
 	}
 
-	void clear() noexcept
+	void clear()// noexcept
 	{
-		while( !empty() )
+		while( !empty())
 		{
 			pop_back();
 		}
