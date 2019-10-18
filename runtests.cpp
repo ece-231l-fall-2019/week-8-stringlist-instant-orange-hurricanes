@@ -29,7 +29,6 @@ int main()
 	e.push_front("D");
 	e.push_back("E");
 	e.print("StringList e");	
-
 	StringList a;
 
 	a.push_back("A");
