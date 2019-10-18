@@ -61,30 +61,6 @@ class StringList
 		std::cout<< std::endl;
 		std::cout<<"-----------------"<<std::endl;
 	}
-/*
-	bool operator==(StringList& a, StringList& b)
-	{
-		if(a.size() == b.size())
-		{
-			while( a._head->value == b._head->value )
-			{
-				a._head == b._head->next;
-				b._head == b._head->next; 
-			}
-
-			llist* bptr = b.front();
-			for (; aptr && bptr != 0; aptr = aptr->next, bptr = bptr-> next)
-			{
-				if (aptr == bptr)
-				{	
-					return true;
-				}
-				return false;
-			}
-		}
-		return false;
-	}
-*/
 	void push_front(std::string value)
 	{
 		llist *ptr = new llist;
@@ -152,7 +128,7 @@ class StringList
 		}	
 		if(tmp)
 			tmp = tmp->prev;
-		_head = tmp;
+		_tail = _head; _head = tmp;
 	}
 
 	bool empty() const
@@ -188,19 +164,18 @@ class StringList
 	{
 		for (llist *i = _head; i != 0; i = i -> next)
 		{
-			while( i -> next != 0 && i -> value == i -> next -> value)
+			while(i ->next != 0 && i -> value == i -> next -> value)
 			{
-				llist *save = i -> next;
-				i -> next = save -> next;
+				llist *save = i->next;
+				i->next = save->next;
 
-				if (save -> next != 0)
+				if (save->next != 0)
 				{
-					save -> next ->prev = i;
+					save->next->prev = i;
 					delete save;
-				}
+				} 
 				else
-				{
-					_head = i;
+				{	_tail = i;
 					delete save;
 				}
 			}
@@ -209,25 +184,4 @@ class StringList
 	
 
 };
-/*
 
-	void unique()
-	{	
-		for (llist *ptr = _head; ptr != 0; ptr = ptr -> next)
-		{
-			if( ptr->next != NULL && ptr->value == ptr->next->value )
-			{
-				llist *savedPtr = ptr->next;
-				ptr->next = savedPtr->next;
-				if( savedPtr->next != NULL)
-				{
-					savedPtr->next->prev = ptr;
-				}
-				else 
-					_tail = ptr;
-				delete savedPtr;
-				_count--;
-			}
-		}
-	}	
-*/
