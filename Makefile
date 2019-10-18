@@ -5,7 +5,7 @@ CXXFLAGS =-Wall -g
 
 all: runtests
 
-runtests: runtests.o StringList.o
+runtests: runtests.o
 
 clean:
 	rm -f runtests *.o

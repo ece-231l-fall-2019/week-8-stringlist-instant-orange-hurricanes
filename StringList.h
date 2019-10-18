@@ -125,7 +125,7 @@ class StringList
 	{
 		llist *delete_me = _tail;
 		_tail = _tail->prev;
-		if( _head )
+		if( _tail )
 			_tail->next = _tail->next->next;
 		else 
 			_head = NULL;
@@ -134,37 +134,20 @@ class StringList
 	}
 	void reverse ()
 	{
-		if( _head == _tail || size() == 1 )
+		if( size() <= 1 )
 			return;
-		if( _head->next == NULL )
-			return;
-		llist *temp;
 		llist *curr = _head;
+		llist *tmp;
 		while( curr != NULL )
 		{
-			temp = curr->prev;
+			tmp = curr->prev;
 			curr->prev = curr->next;
-			curr->next = temp;
-			curr = curr->prev;
-		}
-		temp = temp->prev;
-		if( temp != NULL)
-			temp = temp->prev;
-		_tail = _head;
-		_head = temp;
-/*
-		llist *tmp = NULL;
-		llist *curr = _head;
-		llist *ptr = curr->next;
-		for( ; curr != NULL; ptr = ptr->next)
-		{
-			curr->prev = ptr;
 			curr->next = tmp;
-			ptr->next = curr;
-			curr = curr ->prev;
-		}
-		_head = _tail;
-		_tail = curr;	*/
+			curr = curr->prev;
+		}	
+		if(tmp)
+			tmp = tmp->prev;
+		_head = tmp;
 	}
 
 	bool empty() const

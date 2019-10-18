@@ -124,7 +124,6 @@ int main()
 	Assert(g.size() == 0, "cleared g StringLists of contents!");
 	Assert(h.size() == 0, "cleared h StringLists of contents!");
 	Assert(k.size() == 0, "cleared k StringLists of contents!");
-	
 	//reverse
 	StringList b; 
 	b.push_back("E");
@@ -133,18 +132,18 @@ int main()
 	b.push_back("H");
 	b.push_back("P");
 	b.print("StringList 'b'");
-	
 	b.reverse();
-	b.print();
-	StringList B;
+	
+	/*StringList B;
 	B.push_back("P");
 	B.push_back("H");
 	B.push_back("O");
 	B.push_back("N");
 	B.push_back("E");
 	B.print("StringList 'B'");
-	
-	Assert(b.front() == "E", "b.reverse(): ENOHP -> PHONE");
+	*/
+	Assert(b.front() == "P", "b.reverse(): ENOHP -> PHONE");
+	b.print("StringList b: post-reverse");
 	
 	//unique
 	StringList c;
