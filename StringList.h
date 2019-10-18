@@ -23,12 +23,6 @@ class StringList
 		_count = 0; 
 	}
 
-	void print()
-	{
-		for( llist *start = _head ; start != NULL; start = start->next)
-			std::cout << start->value << " ";
-		std::cout<< std::endl;
-	}
 	// copy constructor
 	StringList(const StringList&);
 	// destructor
@@ -46,16 +40,44 @@ class StringList
 		}	
 		return *this;
 	}
-
+	
 	std::string& front()
 	{
 		return _head->value;
 	}
+	
 	std::string& back()
 	{
 		return _tail->value;
 	}
 	
+	//print function
+	void print(std::string message)
+	{
+		std::cout<<message<<std::endl;
+		for( llist *ptr = _head ; ptr != NULL; ptr = ptr->next)
+			std::cout << ptr->value << " ";
+		std::cout<< std::endl;
+	}
+
+	bool operator==(StringList& a, StringList& b)
+	{
+		if(a.size() == b.size())
+		{
+			llist* aptr = a.front();
+			llist* bptr = b.front();
+	for (; aptr && bptr != 0; aptr = aptr -> next, bptr = bptr -> next)
+			{
+				if (aptr == bptr)
+				{	
+					return true;
+				}
+				return false;
+			}
+		}
+		return false;
+	}
+		
 	void push_front(std::string value)
 	{
 		llist *ptr = new llist;

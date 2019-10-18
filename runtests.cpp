@@ -19,29 +19,8 @@ void Assert(bool cond, std::string message)
 		std::cerr << "FAIL: " << message << std::endl;
 }
 
-<<<<<<< HEAD
-void StringList::print() const
-=======
-
-int main()
->>>>>>> b384d86c4992406653fd6e9e25ea6ccd74625f8c
-{
-	while (_head != NULL)
-	{
-		cout << _head->data << endl;
-		_head = _head->next;
-	}
-}
-
-<<<<<<< HEAD
 int main()
 {
-	
-=======
-
-	// a.print() 
-
->>>>>>> b384d86c4992406653fd6e9e25ea6ccd74625f8c
 	StringList e;
 
 	e.push_back("A");
@@ -49,9 +28,8 @@ int main()
 	e.push_front("C");
 	e.push_front("D");
 	e.push_back("E");
-	a.print();
+	e.print("StringList e");	
 
-/*
 	StringList a;
 
 	a.push_back("A");
@@ -59,35 +37,37 @@ int main()
 	a.push_front("C");
 	a.push_front("D");
 	a.push_back("E");
+	a.print("StringList a");
 
 	// D,C,A,B,E	
-	Assert(a.size() == 5, "size method");
-	Assert(a.front() == "D", "front method");
+	Assert(a.size() == 5, "a.size() = 5");
+	Assert(a.front() == "D", "a.front = 'D'");
 	a.pop_front(); // delete D _ C,A,B,E
-	Assert(a.front() == "C", "pop_front method");
-	Assert(a.back() == "E", "back method");
+	Assert(a.front() == "C", "a.pop_front(): a.front = 'C'");
+	Assert(a.back() == "E", "a.back() = 'E'");
 	a.pop_back();  // delete E _ C,A,B
-	Assert(a.back() == "B", "pop_back method L_45");
+	Assert(a.back() == "B", "a.pop_back(): a.back() = 'B'");
 	a.pop_front(); // delete C _ A,B
-	Assert(a.front() == "A", "front method");
+	Assert(a.front() == "A", "a.front() = 'A'");
 	a.pop_back();  // delete B _ A
-	Assert(a.back() == "A", "back method L_49");
-	Assert(a.size() == 1, "size method L_52");
-	Assert(a.front()== "A","front method");
+	Assert(a.back() == "A", "a.pop_back(): a.back = 'A'");
+	Assert(a.size() == 1, "a.size() = 1");
+	Assert(a.front()== "A","a.front() = 'A'");
 
 	a.push_back("B");
 	a.push_back("R");
 	a.push_front("Q");
 	a.push_back("T");
 	a.push_front("Z");
+	a.print("StringList a: round 2");
 	// Z,Q,A,B,R,T
-	Assert(a.front() == "Z", "front method");
+	Assert(a.front() == "Z", "a.front() = 'Z'");
 	a.pop_back(); // Z,Q,A,B,R
-	Assert(a.front() == "Z", "front method");
+	Assert(a.front() == "Z", "a.pop_back(): a.front() = 'Z'");
 	a.pop_front(); // Q,A,B,R
-	Assert(a.back() == "R", "pop_front");
+	Assert(a.back() == "R", "a.pop_front: a.back() = 'R'");
 	a.pop_back(); // Q,A,B
-	Assert(a.back() == "B", "pop_back");
+	Assert(a.back() == "B", "a.pop_back(): a.back() = 'B'");
 	//===============================^davids OG//
 	
 	
@@ -187,12 +167,8 @@ int main()
 	D.push_back("N");
 	
 	d.unique();
-<<<<<<< HEAD
+
 	Assert(d == D, "unique: BAAANN -> BAN");
-*/	
-=======
-//	Assert(d == D, "unique: BAAANN -> BAN");
 	
->>>>>>> b384d86c4992406653fd6e9e25ea6ccd74625f8c
 	return 0;
 }
