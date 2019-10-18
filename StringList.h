@@ -54,6 +54,7 @@ class StringList
 	//print function
 	void print(std::string message)
 	{
+		std::cout<<"-----------------"<<std::endl;
 		std::cout<<message<<std::endl;
 		for( llist *ptr = _head ; ptr != NULL; ptr = ptr->next)
 			std::cout << ptr->value << " ";
