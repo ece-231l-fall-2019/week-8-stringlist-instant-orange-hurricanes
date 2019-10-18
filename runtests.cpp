@@ -21,7 +21,7 @@ void Assert(bool cond, std::string message)
 
 int main()
 {
-	StringList e;
+/*	StringList e;
 
 	e.push_back("A");
 	e.push_back("B");
@@ -29,6 +29,7 @@ int main()
 	e.push_front("D");
 	e.push_back("E");
 	e.print("StringList e");	
+*/	
 	StringList a;
 
 	a.push_back("A");
@@ -70,7 +71,6 @@ int main()
 	Assert(a.back() == "B", "a.pop_back(): a.back() = 'B'");
 	//===============================^davids OG//
 	
-	
 	//operator =
 	StringList t;
 
@@ -83,36 +83,44 @@ int main()
 	
 	StringList T;		
 	T = t;
+	t.print("StringList T");
 
-	Assert(T.front() == "D", "operator=: T.front() = 'D'");
-	
+	Assert(T.front() == "D", "operator=: T.front() = D");	
+	Assert(T.back() == "E", "operator=: T.back() = E");
+
 	StringList j;
 	j = T;	
+	j.print("StringList j");
 
-	Assert(j.back() == "E", "operator=: j.back() = 'E'");
+	Assert(j.front() == "D", "operator=: j.front() = D");	
+	Assert(j.back() == "E", "operator=: j.back() = E");
 	
 	//empty
 	StringList f;
-	Assert(f.empty() == true, "f.empty: f is empty");
+	Assert(f.empty() == true, "f.empty(): f is empty");
 	
 	StringList i;
+	
 	i.push_back("L");
 	i.push_back("O");
 	i.push_back("L");
 	i.print("StringList i");
 
-	Assert(i.empty() == false, "i.empty: f is not empty");
+	Assert(i.empty() == false, "i.empty(): f is not empty");
 
 	//clear	
 	StringList g;
+	
 	g.push_back("F");
 	g.print("StringList g");
 
 	StringList h;
+	
 	h.push_back("H");
 	h.print("StringList h");
 	
 	StringList k;
+	
 	k.push_back("G");
 	k.print("StringList G");
 	
@@ -120,17 +128,19 @@ int main()
 	h.clear();
 	k.clear();
 	
-	Assert(g.size() == 0, "cleared g StringLists of contents!");
-	Assert(h.size() == 0, "cleared h StringLists of contents!");
-	Assert(k.size() == 0, "cleared k StringLists of contents!");
+	Assert(g.size() == 0, "g.clear(): StringLists of contents!");
+	Assert(h.size() == 0, "h.clear(): StringLists of contents!");
+	Assert(k.size() == 0, "k.clear(): StringLists of contents!");
+	
 	//reverse
 	StringList b; 
+	
 	b.push_back("E");
 	b.push_back("N");
 	b.push_back("O");
 	b.push_back("H");
 	b.push_back("P");
-	b.print("StringList 'b'");
+	b.print("StringList b");
 	b.reverse();
 	
 	/*StringList B;
@@ -142,12 +152,13 @@ int main()
 	B.print("StringList 'B'");
 	*/
 	Assert(b.front() == "P", "b.reverse(): ENOHP -> PHONE");
-	Assert(b.back() == "E", "test 1: checking c.back() = E");
-	Assert(b.size() == 5, "test 2: checking a.size() = 5");
+	Assert(b.back() == "E", "test 1: checking b.back() = E");
+	Assert(b.size() == 5, "test 2: checking b.size() = 5");
 	b.print("StringList b: post-reverse");
 	
 	//unique
 	StringList c;
+	
 	c.push_back("J");
 	c.push_back("A");
 	c.push_back("Z");
@@ -164,12 +175,13 @@ int main()
 	C.print("StringList 'C'");
 	*/
 
-	Assert( c.front() == "J", "unique: JAZZZ -> JAZ");
-	Assert( c.back() == "Z", "test 1: checking c.back() = Z");
-	Assert( c.size() == 3, "test 2: checking a.size() = 3");
+	Assert(c.front() == "J", "unique: JAZZZ -> JAZ");
+	Assert(c.back() == "Z", "test 1: checking c.back() = Z");
+	Assert(c.size() == 3, "test 2: checking c.size() = 3");
 	c.print("StringList c: post_unique");
 	
 	StringList d;
+	
 	d.push_back("B");
 	d.push_back("A");
 	d.push_back("A");
