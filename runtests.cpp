@@ -19,7 +19,12 @@ void Assert(bool cond, std::string message)
 		std::cerr << "FAIL: " << message << std::endl;
 }
 
+<<<<<<< HEAD
 void StringList::print() const
+=======
+
+int main()
+>>>>>>> b384d86c4992406653fd6e9e25ea6ccd74625f8c
 {
 	while (_head != NULL)
 	{
@@ -28,9 +33,15 @@ void StringList::print() const
 	}
 }
 
+<<<<<<< HEAD
 int main()
 {
 	
+=======
+
+	// a.print() 
+
+>>>>>>> b384d86c4992406653fd6e9e25ea6ccd74625f8c
 	StringList e;
 
 	e.push_back("A");
@@ -176,7 +187,12 @@ int main()
 	D.push_back("N");
 	
 	d.unique();
+<<<<<<< HEAD
 	Assert(d == D, "unique: BAAANN -> BAN");
 */	
+=======
+//	Assert(d == D, "unique: BAAANN -> BAN");
+	
+>>>>>>> b384d86c4992406653fd6e9e25ea6ccd74625f8c
 	return 0;
 }
