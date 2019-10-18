@@ -143,6 +143,8 @@ int main()
 	B.print("StringList 'B'");
 	*/
 	Assert(b.front() == "P", "b.reverse(): ENOHP -> PHONE");
+	Assert(b.back() == "E", "test 1: checking c.back() = E");
+	Assert(b.size() == 5, "test 2: checking a.size() = 5");
 	b.print("StringList b: post-reverse");
 	
 	//unique
@@ -155,14 +157,19 @@ int main()
 	c.print("StringList c");
 
 	c.unique();
-	StringList C;	
+	
+	/*StringList C;	
 	C.push_back("J");
 	C.push_back("A");
 	C.push_back("Z");
 	C.print("StringList 'C'");
+	*/
 
 	Assert( c.front() == "J", "unique: JAZZZ -> JAZ");
-	//3 test
+	Assert( c.back() == "Z", "test 1: checking c.back() = Z");
+	Assert( c.size() == 3, "test 2: checking a.size() = 3");
+	c.print("StringList c: post_unique");
+	
 	StringList d;
 	d.push_back("B");
 	d.push_back("A");
@@ -170,17 +177,20 @@ int main()
 	d.push_back("A");
 	d.push_back("N");
 	d.push_back("N");
-	d.print("StringList 'd'");
-		
+	d.print("StringList d");
+	/*	
 	StringList D;
 	D.push_back("B");
 	D.push_back("A");
 	D.push_back("N");
 	D.print("StringList 'D'");
-	
+	*/
 	d.unique();
 
-	Assert(d.back() == "N", "unique: BAAANN -> BAN");
-	//3 test
+	Assert(d.front() == "B", "unique: BAAANN -> BAN");
+	Assert(d.back() == "N", "test 1: checking d.back() = N");
+	Assert(d.size() == 3, "test 2: checking d.size() = 3");
+	d.print("StringList d: post_unique");
+	
 	return 0;
 }
