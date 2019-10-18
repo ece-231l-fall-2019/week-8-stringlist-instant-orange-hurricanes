@@ -36,7 +36,9 @@ int main()
 	e.push_front("C");
 	e.push_front("D");
 	e.push_back("E");
-
+	e.print();
+	e.reverse();
+	e.print();
 	StringList a;
 
 	a.push_back("A");
@@ -134,8 +136,9 @@ int main()
 	b.push_back("O");
 	b.push_back("H");
 	b.push_back("P");
-	
+	b.print();	
 	b.reverse();
+	b.print();
 	StringList B;
 	B.push_back("P");
 	B.push_back("H");
