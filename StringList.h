@@ -70,8 +70,8 @@ class StringList
 		ptr->next = _head;
 		if( _head != NULL)
 			_head->prev = ptr;
-		if( _head == NULL )
-			_head = ptr;
+		if( _tail == NULL )
+			_tail = ptr;
 		_head = ptr;
 		_count++;
 		
